@@ -1,0 +1,29 @@
+body{
+  font-family: sans-serif;
+}
+
+.column{
+  display: inline-block;
+  width: 47%;
+  height: inherit;
+  margin-left: 9px;
+  margin-right: 10px;
+  padding-bottom: 20px;
+  vertical-align: top;
+
+  /* border-right: 2px solid brown; */
+}
+
+.submit{
+  margin: 0px 0px 0px 0px;
+}
+
+.wrapper{
+  display: block;
+  width: 60%;
+  height: auto;
+  padding: 0px 10px 0px 20px;
+  border: 2px solid brown;
+  background-color: beige;
+
+}

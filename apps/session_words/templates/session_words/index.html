@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Session Words index page</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'session_words/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
+
+  </head>
+  <body>
+
+      <div class = "wrapper">
+        <!-- <h1>This is the index.html file</h1> -->
+        <!-- <div class = "addwords" action = "/addwords" method = "post" value = ""> -->
+
+          <!--pick a color-->
+        <div class = "column">
+
+          <form action="/addword" method = "POST">
+            {% csrf_token %}
+            <h5>Add a new word</h5>
+              <input type = "text" name="add_word"><br>
+
+            <h5>Select your favorite color</h5>
+
+            <table style="width:100%">
+              <tr>
+                <input type="radio" name="color" value = "red" checked> Red
+                <input type="color" name="red" value = "#cc0835">
+                <input type="radio" name="color" value = "blue"> Blue
+                <input type="color" name="blue" value = "#0825cc">
+                <input type="radio" name="color" value = "green"> Green
+                <input type="color" name="green" value = "#278451"><br>
+                <br>
+              </tr>
+
+              <tr>
+                <input type="radio" name="color" value = "yellow"> Yellow
+                <input type="color" name="yellow" value = "#eef952">
+                <input type="radio" name="color" value = "purple"> Purple
+                <input type="color" name="purple" value = "#7e26cc">
+                <input type="radio" name="color" value = "pink"> Pink
+                <input type="color" name="pink" value = "#f7aaf0"><br>
+                <br>
+              </tr>
+
+              <tr>
+                <input type="radio" name="color" value = "orange"> Orange
+                <input type="color" name="orange" value = "#ef9347">
+                <input type="radio" name="color" value = "black"> Black
+                <input type="color" name="black" value = "">
+                <input type="radio" name="color" value = "brown"> Brown
+                <input type="color" name="brown" value = "#685b3b"><br>
+                <br>
+              </tr>
+            </table>
+
+            <input type="checkbox" id = "showbigfont" name="bigfont" value="on" checked="checked">Show in BIG font!<br>
+            <br>
+            <input type = "submit" value = "Submit">
+          </form>
+        </div><!-- pageleft end div -->
+
+
+        <div class = "column">
+          <br>
+          <br>
+          <form action = "/clear" method = "POST">
+            {% csrf_token %}
+            <input type="submit" value="Clear Session">
+          </form>
+
+          <h2></h2>
+          {% for words in request.session.wordlist %}
+            <p><span style="color:{{ words.1 }}"><font size="{{ words.2 }}"> {{ words.0 }}</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{{ words.3 }}</p>
+          {% endfor %}
+        </div><!-- pageright end div -->
+
+      </div><!--wrapper end div-->
+  </body>
+</html>
